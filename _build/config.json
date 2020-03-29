@@ -1,0 +1,38 @@
+{
+	"name": "LexikonEditor",
+	"lowCaseName": "lexiconeditor",
+	"description": "Edit Lexicon Strings",
+	"author": "Jan Dähne",
+	"version": "1.0.0-pl",
+	"package": {
+	    "systemSettings": [
+	    	{
+				"key": "namespace",
+				"area": "system",
+				"value": "",
+				"type": "modx-combo-namespace"
+			}
+		],
+		"menus": [
+			{
+	            "text": "lexiconeditor.menu",
+	            "description": "lexiconeditor.menu_desc",
+	            "action": "home",
+	            "parent": "components"
+        	}
+        ]
+	},
+	"dependencies": [{
+		"name": "php",
+		"version": ">=5.6"
+	},
+	{
+		"name": "modx",
+		"version": ">=2.6"
+	}],
+	"build": {
+		"readme": "docs/readme.md",
+		"license": "docs/license.md",
+		"changelog": "docs/changelog.md"
+	}
+}
