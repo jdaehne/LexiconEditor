@@ -38,6 +38,8 @@ class LexiconeditorHomeManagerController extends modExtraManagerController {
             'assetsUrl' => $assetsUrl,
             'connectorUrl' => $connectorsUrl,
             'namespace' => $this->modx->getOption('lexiconeditor.namespace'),
+            'topic' => $this->modx->getOption('lexiconeditor.topic'),
+            'language' => $this->modx->getOption('lexiconeditor.language'),
         );
 
         $this->addHtml('<script type="text/javascript">

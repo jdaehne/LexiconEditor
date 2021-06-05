@@ -7,8 +7,8 @@ LexiconEditor.grid.Entries = function(config) {
         ,baseParams: {
             action: 'workspace/lexicon/getList'
             ,'namespace': LexiconEditor.config.namespace
-            ,topic: ''
-            ,language: MODx.config.manager_language || 'en'
+            , 'topic': LexiconEditor.config.topic
+            , 'language': LexiconEditor.config.language
         }
         ,fields: ['name','value','namespace','topic','language','editedon','overridden']
         ,paging: true
@@ -44,12 +44,14 @@ LexiconEditor.grid.Entries = function(config) {
             ,name: 'language'
             ,id: 'modx-lexicon-filter-language'
             ,itemId: 'language'
-            ,value: MODx.config.manager_language || 'en'
+            ,value: LexiconEditor.config.language
             ,width: 100
             ,url: MODx.config.connector_url
             ,baseParams: {
                 action: 'system/language/getlist'
                 ,'namespace': LexiconEditor.config.namespace
+                ,'topic': LexiconEditor.config.topic
+                ,'language': LexiconEditor.config.language
             }
             ,listeners: {
                 'select': {fn:this.changeLanguage,scope:this}
@@ -124,15 +126,18 @@ Ext.extend(LexiconEditor.grid.Entries,MODx.grid.Grid,{
     }
 
     ,clearFilter: function() {
-    	this.store.baseParams = {
-            action: 'mgr/lexiconeditor/getList'
-    	};
-    	this.getBottomToolbar().changePage(1);
+        this.store.baseParams = {
+            action: 'workspace/lexicon/getList'
+            , 'namespace': LexiconEditor.config.namespace
+            , 'topic': LexiconEditor.config.topic
+            , 'language': LexiconEditor.config.language
+        };
+        this.getBottomToolbar().changePage(1);
         var tb = this.getTopToolbar();
 
-    	var tcl = tb.getComponent('language');
-        tcl.setValue(MODx.config.manager_language || 'en');
-
+        var tcl = tb.getComponent('language');
+        tcl.setValue(LexiconEditor.config.language || 'en');
+        
         tb.getComponent('search').setValue('');
     	//this.refresh();
     }
