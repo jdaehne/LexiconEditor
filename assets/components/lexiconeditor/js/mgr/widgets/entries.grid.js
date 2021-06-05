@@ -126,15 +126,18 @@ Ext.extend(LexiconEditor.grid.Entries,MODx.grid.Grid,{
     }
 
     ,clearFilter: function() {
-    	this.store.baseParams = {
-            action: 'mgr/lexiconeditor/getList'
-    	};
-    	this.getBottomToolbar().changePage(1);
+        this.store.baseParams = {
+            action: 'workspace/lexicon/getList'
+            , 'namespace': LexiconEditor.config.namespace
+            , 'topic': LexiconEditor.config.topic
+            , 'language': LexiconEditor.config.language
+        };
+        this.getBottomToolbar().changePage(1);
         var tb = this.getTopToolbar();
 
-    	var tcl = tb.getComponent('language');
-        tcl.setValue(MODx.config.manager_language || 'en');
-
+        var tcl = tb.getComponent('language');
+        tcl.setValue(LexiconEditor.config.language || 'en');
+        
         tb.getComponent('search').setValue('');
     	//this.refresh();
     }
