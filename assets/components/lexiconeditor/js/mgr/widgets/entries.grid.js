@@ -5,7 +5,7 @@ LexiconEditor.grid.Entries = function(config) {
         ,url: MODx.config.connector_url
         ,fields: ['name','value','namespace','topic','language','editedon','overridden']
         ,baseParams: {
-            action: 'workspace/lexicon/getList'
+            action: 'Workspace/Lexicon/GetList'
             ,'namespace': LexiconEditor.config.namespace
             ,topic: ''
             ,language: MODx.config.manager_language || 'en'
@@ -16,7 +16,7 @@ LexiconEditor.grid.Entries = function(config) {
         ,anchor: '97%'
         ,autoExpandColumn: 'name'
         ,autosave: true
-        ,save_action: 'workspace/lexicon/updatefromgrid'
+        ,save_action: 'Workspace/Lexicon/UpdateFromGrid'
         ,columns: [{
             header: _('name')
             ,dataIndex: 'name'
@@ -48,7 +48,7 @@ LexiconEditor.grid.Entries = function(config) {
             ,width: 100
             ,url: MODx.config.connector_url
             ,baseParams: {
-                action: 'system/language/getlist'
+                action: 'System/Language/GetList'
                 ,'namespace': LexiconEditor.config.namespace
             }
             ,listeners: {
@@ -125,7 +125,10 @@ Ext.extend(LexiconEditor.grid.Entries,MODx.grid.Grid,{
 
     ,clearFilter: function() {
     	this.store.baseParams = {
-            action: 'mgr/lexiconeditor/getList'
+            action: 'Workspace/Lexicon/GetList'
+            ,'namespace': LexiconEditor.config.namespace
+            ,topic: ''
+            ,language: MODx.config.manager_language || 'en'
     	};
     	this.getBottomToolbar().changePage(1);
         var tb = this.getTopToolbar();
