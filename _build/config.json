@@ -3,7 +3,7 @@
 	"lowCaseName": "lexiconeditor",
 	"description": "Edit Lexicon Strings",
 	"author": "Jan Dähne",
-	"version": "1.0.0-pl",
+	"version": "1.0.1-pl",
 	"package": {
 	    "systemSettings": [
 	    	{
